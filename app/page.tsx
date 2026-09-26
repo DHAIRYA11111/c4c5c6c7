@@ -1,31 +1,19 @@
 import { ArrowRight, Leaf, ShieldCheck, Sparkles, Truck } from "lucide-react";
 import { fragrances, packSizes } from "@/lib/catalog";
 
+function Logo() {
+  return <span className="brand"><img src="/logo.svg" alt="" className="brand-logo"/><span>Shiv Prem <em>Agencies</em></span></span>;
+}
+
 export default function Home() {
   const featured = fragrances.slice(0, 6);
-  return (
-    <main>
-      <header className="site-header">
-        <a className="brand" href="#top" aria-label="Shiv Prem Agencies home">
-          <span className="brand-mark">✦</span><span>Shiv Prem <em>Agencies</em></span>
-        </a>
-        <nav><a href="#catalogue">Catalogue</a><a href="#about">Why us</a><a href="#contact">Contact</a><button className="button button-dark">Sign in</button></nav>
-      </header>
-
-      <section className="hero" id="top">
-        <div className="hero-copy"><p className="eyebrow"><Leaf size={15}/> Fragrance, thoughtfully supplied</p><h1>Make every candle feel like <i>home.</i></h1><p className="hero-text">Discover a considered collection of candle fragrances and aroma oils, supplied in flexible quantities for makers and growing businesses.</p><div className="hero-actions"><a className="button button-primary" href="#catalogue">Explore fragrances <ArrowRight size={17}/></a><a className="text-link" href="#contact">Talk to our team</a></div></div>
-        <div className="hero-art" aria-label="Botanical candle illustration"><div className="sun"></div><div className="leaf leaf-one"></div><div className="leaf leaf-two"></div><div className="jar"><div className="flame"></div></div><div className="hero-note">Small batches<br/><strong>big atmosphere</strong></div></div>
-      </section>
-
-      <section className="trust-row"><div><ShieldCheck/> Quality-led sourcing</div><div><Sparkles/> Fragrance that lasts</div><div><Truck/> Flexible fulfilment</div></section>
-
-      <section className="section" id="catalogue"><div className="section-heading"><div><p className="eyebrow">The collection</p><h2>Find your signature scent</h2></div><span className="muted">{fragrances.length} curated fragrances</span></div><div className="product-grid">{featured.map((item) => <article className="product-card" key={item.slug}><div className="product-art" style={{ background: item.color }}><span>{item.category === "Aroma Oil" ? "Aroma" : "Candle"}</span></div><div className="product-info"><div><p className="category">{item.category}</p><h3>{item.name}</h3></div><p className="notes">{item.notes}</p><div className="card-footer"><span>From ₹{item.price.toLocaleString("en-IN")}</span><button aria-label={`View ${item.name}`}>View <ArrowRight size={15}/></button></div></div></article>)}</div></section>
-
-      <section className="quantity-banner"><div><p className="eyebrow">Made for your scale</p><h2>From 500 ml to 10 kg.<br/><i>Exactly what you need.</i></h2></div><div className="quantity-pills">{packSizes.slice(0, 6).map((size) => <span key={size}>{size}</span>)}<span>Custom</span></div></section>
-
-      <section className="about section" id="about"><div className="about-card"><p className="eyebrow">The Shiv Prem difference</p><h2>A warmer way to source fragrance.</h2><p>We bring dependable fragrance supply and a personal, responsive approach together—so you can focus on creating products people want to live with.</p><a className="text-link" href="#contact">Work with us <ArrowRight size={16}/></a></div><div className="about-stat"><strong>10+</strong><span>standard pack sizes</span><strong>100%</strong><span>made for makers</span></div></section>
-
-      <footer id="contact"><div className="brand"><span className="brand-mark">✦</span><span>Shiv Prem <em>Agencies</em></span></div><p>Premium candle fragrances & aroma oils.</p><span className="muted">© 2026 Shiv Prem Agencies</span></footer>
-    </main>
-  );
+  return <main>
+    <header className="site-header"><a href="#top" aria-label="Shiv Prem Agencies home"><Logo /></a><nav><a href="#catalogue">Catalogue</a><a href="#about">Our story</a><a href="#contact">Contact</a><a className="button button-dark" href="/sign-in">Sign in <ArrowRight size={15}/></a></nav></header>
+    <section className="hero" id="top"><div className="hero-copy"><p className="eyebrow"><Leaf size={15}/> Fragrance, thoughtfully supplied</p><h1>Scents that make<br/><i>space feel special.</i></h1><p className="hero-text">Premium candle fragrances and aroma oils for makers, retailers, and brands creating beautiful everyday rituals.</p><div className="hero-actions"><a className="button button-primary" href="/catalogue">Explore fragrances <ArrowRight size={17}/></a><a className="text-link" href="#contact">Talk to our team</a></div><div className="hero-proof"><span><strong>10+</strong> pack sizes</span><span><strong>100%</strong> maker focused</span></div></div><div className="hero-art"><div className="art-glow"/><div className="art-leaf art-leaf-a"/><div className="art-leaf art-leaf-b"/><div className="candle"><div className="wick"/><div className="jar-label">SHIV<br/><small>PREM</small></div></div><div className="floating-note">small batches<br/><strong>big atmosphere</strong></div></div></section>
+    <section className="trust-row"><div><ShieldCheck/> Quality-led sourcing</div><div><Sparkles/> Fragrance that lasts</div><div><Truck/> Flexible fulfilment</div></section>
+    <section className="section collection" id="catalogue"><div className="section-heading"><div><p className="eyebrow">The collection</p><h2>Find your signature scent</h2></div><a className="text-link" href="/catalogue">View all <ArrowRight size={16}/></a></div><div className="product-grid">{featured.map((item, index) => <article className="product-card" key={item.slug}><div className={`product-art art-${index}`} style={{ background: item.color }}><span>{item.category === "Aroma Oil" ? "Aroma oil" : "Candle fragrance"}</span><div className="bottle"><div/></div></div><div className="product-info"><p className="category">{item.category}</p><h3>{item.name}</h3><p className="notes">{item.notes}</p><div className="card-footer"><span>From ₹{item.price.toLocaleString("en-IN")}</span><a href="/catalogue" aria-label={`View ${item.name}`}>View <ArrowRight size={15}/></a></div></div></article>)}</div></section>
+    <section className="quantity-banner"><div><p className="eyebrow">Made for your scale</p><h2>From 500 ml to 10 kg.<br/><i>Exactly what you need.</i></h2><p>Flexible quantities for experiments, small batches, and growing production.</p></div><div className="quantity-pills">{packSizes.map((size) => <span key={size}>{size}</span>)}</div></section>
+    <section className="about section" id="about"><div className="about-visual"><div className="about-circle"/><div className="about-leaf"/><span>made with<br/><strong>intention</strong></span></div><div className="about-card"><p className="eyebrow">The Shiv Prem difference</p><h2>A warmer way to source fragrance.</h2><p>Dependable fragrance supply with a personal, responsive approach—so you can focus on creating products people want to live with.</p><a className="text-link" href="#contact">Work with us <ArrowRight size={16}/></a></div></section>
+    <footer id="contact"><Logo/><p>Premium candle fragrances & aroma oils.</p><a href="mailto:hello@shivpremagencies.com">hello@shivpremagencies.com</a><span className="muted">© 2026 Shiv Prem Agencies</span></footer>
+  </main>;
 }
