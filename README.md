@@ -1,15 +1,18 @@
 # Shiv Prem Agencies
 
-A premium storefront starter for candle fragrances and aroma oils.
+A premium storefront for candle fragrances and aroma oils.
 
-## Current starter scope
+## Current implementation
 
-- Responsive botanical storefront homepage
-- Product catalogue data layer in `lib/catalog.ts`
-- Standard pack sizes: 500 ml and 1 kg through 10 kg
-- Custom quantity placeholder in the product model
-- Premium green, cream, and botanical visual system
-- No credentials or external services committed
+- Next.js App Router + TypeScript starter
+- Botanical green, cream, and earthy visual system
+- Responsive landing page at `/`
+- Searchable, filterable catalogue at `/catalogue`
+- Candle fragrance and aroma oil categories
+- Pack options from 500 ml through 10 kg
+- Custom kg input in the catalogue
+- Client-side cart at `/cart` with localStorage persistence
+- Central pricing and quantity validation helpers in `lib/pricing.ts`
 
 ## Run locally
 
@@ -18,14 +21,16 @@ npm install
 npm run dev
 ```
 
-Open http://localhost:3000.
+Open http://localhost:3000, then visit `/catalogue`.
 
-## Next implementation milestones
+## Important catalogue note
 
-1. Replace the seed catalogue in `lib/catalog.ts` with the verified fragrance list from the supplied PDF.
-2. Add Prisma/PostgreSQL models for products, variants, inventory, customers, addresses, and orders.
-3. Add Auth.js (or managed auth), protected account routes, and server-side admin authorization.
-4. Add cart, checkout, order creation, and payment-provider-ready APIs.
+The current data in `lib/catalog.ts` is a starter catalogue. Replace it with the complete, verified fragrance list from the supplied PDF before launch. Starter prices are configurable placeholders and must be verified before accepting orders.
+
+## Next milestones
+
+1. Import and verify the complete supplied fragrance list.
+2. Add Prisma/PostgreSQL persistence for products, variants, inventory, customers, addresses, and orders.
+3. Add secure authentication and protected customer/admin routes.
+4. Connect cart checkout and payment-provider-ready order creation.
 5. Add the admin dashboard for catalogue, pricing, inventory, customers, and orders.
-
-Prices currently act as configurable starter values and should be verified before launch.
