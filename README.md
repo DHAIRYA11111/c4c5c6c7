@@ -23,6 +23,12 @@ npm run dev
 
 Open http://localhost:3000, then visit `/catalogue`.
 
+## Razorpay checkout setup
+
+1. Copy `.env.example` to `.env`.
+2. Set `NEXT_PUBLIC_RAZORPAY_KEY_ID` and `RAZORPAY_KEY_SECRET` with your own Razorpay test/live credentials.
+3. Keep secrets local or in deployment environment secrets. Do not commit real credentials.
+
 ## Important authentication note
 
 The current sign-in/account flow is a client-side UX prototype using browser localStorage. It must be replaced with server-side authentication, password hashing, sessions, and database persistence before production use.
